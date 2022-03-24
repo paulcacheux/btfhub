@@ -45,18 +45,18 @@ if [ "${1}" != "${ubuntuver}" ]; then
 fi
 
 case "${ubuntuver}" in
-    "bionic")
-        kernelversions=("4.15.0" "5.4.0")
-        ;;
-    "focal")
-        kernelversions=("5.4.0" "5.8.0" "5.11.0")
-        ;;
-    *)
-        continue
-        ;;
-    esac
+"bionic")
+    kernelversions=("4.15.0" "5.4.0")
+    ;;
+"focal")
+    kernelversions=("5.4.0" "5.8.0" "5.11.0")
+    ;;
+*)
+    continue
+    ;;
+esac
 
-for kernelver in kernelversions
+for kernelver in kernelversions; do
 
     if [ -z "${2}" ] || [ "${2}" != "${kernelver}" ]; then
         continue
