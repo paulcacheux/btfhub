@@ -40,16 +40,34 @@ for arch in x86_64 arm64; do
 
 for ubuntuver in bionic focal; do
 
-    if [ "${1}" != "${ubuntuver}" ]; then
+if [ "${1}" != "${ubuntuver}" ]; then
+    continue
+fi
+
+case "${ubuntuver}" in
+    "bionic")
+        kernelversions=("4.15.0" "5.4.0")
+        ;;
+    "focal")
+        kernelversions=("5.4.0" "5.8.0" "5.11.0")
+        ;;
+    *)
+        continue
+        ;;
+    esac
+
+for kernelver in kernelversions
+
+    if [ -z "${2}" ] || [ "${2}" != "${kernelver}" ]; then
         continue
     fi
 
     case "${ubuntuver}" in
     "bionic")
-        regex="(linux-image-unsigned-(4.15.0|5.4.0)-.*-(generic|azure|gke|gcp)-dbgsym|linux-image-(4.15.0|5.4.0)-.*-aws-dbgsym)"
+        regex="(linux-image-unsigned-$kernelver-.*-(generic|azure|gke|gcp)-dbgsym|linux-image-$kernelver-.*-aws-dbgsym)"
         ;;
     "focal")
-        regex="(linux-image-unsigned-(5.4.0|5.8.0|5.11.0)-.*-(generic|azure|gke|gcp)-dbgsym|linux-image-(5.4.0|5.8.0|5.11.0)-.*-aws-dbgsym)"
+        regex="(linux-image-unsigned-$kernelver-.*-(generic|azure|gke|gcp)-dbgsym|linux-image-$kernelver-.*-aws-dbgsym)"
         ;;
     *)
         continue
@@ -146,6 +164,8 @@ for ubuntuver in bionic focal; do
     pwd
     rm -f packages
     cd "${origdir}" >/dev/null || exit
+
+done # kernelver
 
 done
 
