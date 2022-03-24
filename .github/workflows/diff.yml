@@ -31,4 +31,4 @@ jobs:
     - name: Diff with BTFHub Archive
       run: |
         cd btfhub-archive-repo
-        git diff --stat
+        git status
