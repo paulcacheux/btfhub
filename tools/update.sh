@@ -56,7 +56,7 @@ case "${ubuntuver}" in
     ;;
 esac
 
-for kernelver in kernelversions; do
+for kernelver in $kernelversions; do
 
     if [ -z "${2}" ] || [ "${2}" != "${kernelver}" ]; then
         continue
