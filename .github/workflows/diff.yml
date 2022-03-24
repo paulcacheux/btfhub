@@ -1,4 +1,4 @@
-name: Update BTFHub Archives
+name: Diff with BTFHub Archives
 on:
   push:
 
