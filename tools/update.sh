@@ -148,7 +148,7 @@ for kernelver in $kernelversions; do
 
         }
 
-	    rm -rf "${basedir}/ubuntu/${ubuntuver}/${arch}/usr"
+	    rm -rf "./usr"
 
 	    pahole --btf_encode_detached "${version}.btf" "${version}.vmlinux"
 	    # pahole "./${version}.btf" > "${version}.txt"
