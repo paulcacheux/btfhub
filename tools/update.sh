@@ -89,7 +89,7 @@ for kernelver in kernelversions; do
     origdir=$(pwd)
     repository="http://ddebs.ubuntu.com"
 
-    mkdir -p "${basedir}/ubuntu/${ubuntuver}"
+    mkdir -p "${basedir}/ubuntu/${ubuntuver}/${arch}"
     cd "${basedir}/ubuntu/${ubuntuver}/${arch}" || exiterr "no ${ubuntuver} dir found"
 
     wget http://ddebs.ubuntu.com/dists/${ubuntuver}/main/binary-${altarch}/Packages -O ${ubuntuver}
@@ -209,7 +209,7 @@ for centosver in centos7 centos8; do
 
     regex="kernel-debuginfo-[0-9].*${altarch}.rpm"
 
-    mkdir -p "${basedir}/centos/${centosver/centos/}"
+    mkdir -p "${basedir}/centos/${centosver/centos/}/${arch}"
     cd "${basedir}/centos/${centosver/centos/}/${arch}" || exiterr "no ${centosver} dir found"
 
     info "downloading ${repository} information"
@@ -315,7 +315,7 @@ for fedoraver in fedora29 fedora30 fedora31 fedora32 fedora33 fedora34; do
 
     regex="kernel-debuginfo-[0-9].*${altarch}.rpm"
 
-    mkdir -p "${basedir}/fedora/${fedoraver/fedora/}"
+    mkdir -p "${basedir}/fedora/${fedoraver/fedora/}/${arch}"
     cd "${basedir}/fedora/${fedoraver/fedora/}/${arch}" || exiterr "no ${fedoraver} dir found"
 
     info "downloading ${repository01} information"
