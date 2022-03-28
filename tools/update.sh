@@ -131,7 +131,7 @@ for kernelver in $kernelversions; do
 	    # extract vmlinux file from ddeb package
 	    dpkg --fsys-tarfile "${version}.ddeb" | tar xvf - "./usr/lib/debug/boot/vmlinux-${version}" || \
 	    {
-            dpkg --fsys-tarfile "${version}.ddeb" | tar tvf - | grep "vmlinux"
+            dpkg --fsys-tarfile "${version}.ddeb" | tar tvf -
 	        warn "could not deal with ${version}, cleaning and moving on..."
 	        rm -rf "${basedir}/ubuntu/${ubuntuver}/${arch}/usr"
 	        rm -rf "${version}.ddeb"
