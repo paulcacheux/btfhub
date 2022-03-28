@@ -1,6 +1,6 @@
 name: Diff with BTFHub Archives
 on:
-  pull_request:
+  push:
 
 jobs:
   diff:
