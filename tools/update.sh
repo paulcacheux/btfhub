@@ -114,7 +114,7 @@ for kernelver in $kernelversions; do
 	    echo FILENAME: "${filename}"
 	    echo VERSION: "${version}"
 
-	    if [ -f "${version}.btf.tar.xz" ] || [ -f "${version}.failed" ]; then
+	    if [ -f "${version}.btf.tar.xz" ]; then
 	    	info "file ${version}.btf already exists"
 	    	continue
 	    fi
