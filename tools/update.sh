@@ -131,10 +131,11 @@ for kernelver in $kernelversions; do
 	    # extract vmlinux file from ddeb package
 	    dpkg --fsys-tarfile "${version}.ddeb" | tar xvf - "./usr/lib/debug/boot/vmlinux-${version}" || \
 	    {
+            dpkg --fsys-tarfile "${version}.ddeb" | tar tvf | grep "vmlinux"
 	        warn "could not deal with ${version}, cleaning and moving on..."
 	        rm -rf "${basedir}/ubuntu/${ubuntuver}/${arch}/usr"
 	        rm -rf "${version}.ddeb"
-		touch "${version}.failed"
+            touch "${version}.failed"
 	        continue
 	    }
 
@@ -143,9 +144,8 @@ for kernelver in $kernelversions; do
 	        warn "could not rename vmlinux ${version}, cleaning and moving on..."
 	        rm -rf "${basedir}/ubuntu/${ubuntuver}/${arch}/usr"
 	        rm -rf "${version}.ddeb"
-		touch "${version}.failed"
+            touch "${version}.failed"
 	        continue
-
         }
 
 	    rm -rf "./usr"
