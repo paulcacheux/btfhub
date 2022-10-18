@@ -3,6 +3,7 @@ on:
   schedule:
     - cron: "0 1 * * 2"
   pull_request:
+  push:
 jobs:
   build:
     name: BATS Tests
