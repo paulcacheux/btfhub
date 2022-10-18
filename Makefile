@@ -43,5 +43,5 @@ update:
 	rsync -av ./archive/ btfhub-archive-repo --exclude=.gitignore
 
 test:
-	bats test/update.bats
-	bats test/btfgen.bats
+	bats --trace test/update.bats
+	bats --trace test/btfgen.bats
